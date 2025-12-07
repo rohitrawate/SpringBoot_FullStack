@@ -1,0 +1,19 @@
+package jpa;
+
+import org.springframework.stereotype.Repository;
+
+import course.Course;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
+@Repository
+public class CourseJpaRepository  {
+	
+	@PersistenceContext
+	private EntityManager entityManager;
+	
+	public void insert(Course course) {
+		entityManager.merge(course);
+	}
+
+}

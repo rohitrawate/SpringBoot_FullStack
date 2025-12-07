@@ -1,0 +1,5 @@
+package com.rohit.springdatajpa;
+
+public interface CourseSpringDataJpaRepository {
+
+}

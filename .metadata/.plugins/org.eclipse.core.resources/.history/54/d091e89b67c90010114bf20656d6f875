@@ -1,0 +1,43 @@
+package com.rohit.learnspringframework.examples.a1;
+
+import java.util.Arrays;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.w3c.dom.ls.LSOutput;
+
+import com.sun.jdi.PathSearchingVirtualMachine;
+
+@Component
+class YOurBusinessClass{
+	
+}
+
+@Component
+class Dependency1{
+	
+}
+
+@Component
+class Dependency2{
+	
+}
+
+@Configuration
+@ComponentScan
+public class DepInjectionLauncherApplication {
+
+	public static void main(String[] args) {
+		
+		try(var context = 
+			new AnnotationConfigApplicationContext
+				(DepInjectionLauncherApplication.class)){
+			
+		Arrays.stream(context.getBeanDefinitionNames())
+					.forEach(System.out::println);
+			
+		}
+	}
+}

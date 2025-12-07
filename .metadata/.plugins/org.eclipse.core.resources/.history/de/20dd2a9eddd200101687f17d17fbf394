@@ -1,0 +1,20 @@
+package com.rohit.helloworld;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+
+//Import({MainController.class})
+
+@SpringBootApplication
+@ComponentScan( basePackages =  {"com/rohit/helloworld", "Controller"})
+//@ComponentScan( includeFilters = @ComponentScan.Filter(type = FilterType.REGEX,
+//                pattern = "com/rohit/helloworld"))
+public class HelloWorldAppApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(HelloWorldAppApplication.class, args);
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.rohit.springboot.learn_jpa_and_hibernate.course;
+
+public class Course {
+
+}

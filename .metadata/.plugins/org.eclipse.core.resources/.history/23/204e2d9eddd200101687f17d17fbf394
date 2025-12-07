@@ -1,0 +1,2 @@
+spring.application.name=HelloWorld-app
+server.port = 1010

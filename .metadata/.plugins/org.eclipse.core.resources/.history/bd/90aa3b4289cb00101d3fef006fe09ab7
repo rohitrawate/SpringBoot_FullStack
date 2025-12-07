@@ -1,0 +1,10 @@
+logging.level.org.springframework= trace
+
+prod
+trace
+debug
+dev
+info
+error
+
+Run as > maven build > 

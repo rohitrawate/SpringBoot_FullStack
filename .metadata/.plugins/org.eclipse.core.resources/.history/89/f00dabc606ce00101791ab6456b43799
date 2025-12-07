@@ -1,0 +1,23 @@
+package com.rohit.springboot.learn_jpa_and_hibernate;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.persistence.autoconfigure.EntityScan;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+
+
+@SpringBootApplication
+@ComponentScan( basePackages = {"src.main.java.course", "src.main.java.jpa"})
+@EntityScan("course")
+public class LearnJpaAndHibernateApplication {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext run = SpringApplication.run(LearnJpaAndHibernateApplication.class, args);
+		
+		String[] beanDefinitionNames = run.getBeanDefinitionNames();
+		
+		System.out.println("Beans "+ beanDefinitionNames.toString());
+	}
+
+}

@@ -1,0 +1,34 @@
+package com.rohit.springboot.learn_jpa_and_hibernate.jpa;
+
+import org.springframework.stereotype.Repository;
+
+import com.rohit.springboot.learn_jpa_and_hibernate.course.Course;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+
+@Repository
+@Transactional
+public class CourseJpaRepository  {
+	
+	@PersistenceContext
+	private EntityManager entityManager;
+	
+	@Transactional
+	public void insert(Course course) {
+		entityManager.merge(course);      // Transactional required for this Method
+	}
+	
+	public Course findById(long id) {
+		Course course = entityManager.find(Course.class, id);
+		return course;
+	}
+	
+	@Transactional
+	public void deleteById(long id) {
+		Course course = entityManager.find(Course.class, id); 
+			entityManager.remove(course);
+	}
+
+}

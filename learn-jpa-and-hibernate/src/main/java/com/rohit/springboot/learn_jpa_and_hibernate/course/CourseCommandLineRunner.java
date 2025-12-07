@@ -1,0 +1,38 @@
+package com.rohit.springboot.learn_jpa_and_hibernate.course;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import com.rohit.springboot.learn_jpa_and_hibernate.jpa.CourseJpaRepository;
+
+@Component
+public class CourseCommandLineRunner implements CommandLineRunner{
+
+	public CourseCommandLineRunner() {
+		System.out.println("CourseCommandLineRunner");
+	}
+	
+//	@Autowired
+//	private CourseJdbcRepository repository;
+
+	@Autowired
+	private CourseJpaRepository repository;
+	
+	@Override
+	public void run(String... args) throws Exception {
+		repository.insert(new Course(1, "Learn Microservices", "60min"));
+		repository.insert(new Course(2, "Learn Spring Security", "28min"));
+		repository.insert(new Course(3, "Learn Python AI", "Baledung"));
+	
+		repository.deleteById(2);
+		System.out.println(repository.findById(1));
+		System.out.println(repository.findById(3));
+//		System.out.println(repository.findById(2));   //org.springframework.dao.EmptyResultDataAccessException: 
+		           									  //Incorrect result size: expected 1, actual 0
+
+	}
+
+	
+	
+}

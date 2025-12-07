@@ -1,0 +1,54 @@
+package com.rohit.course;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import com.rohit.jpa.CourseJpaRepository;
+import com.rohit.springdatajpa.CourseSpringDataJpaRepository;
+
+@Component
+public class CourseCommandLineRunner implements CommandLineRunner{
+
+	
+	public CourseCommandLineRunner() {
+		System.out.println("CourseCommandLineRunner: Bean");
+	}
+	
+//	@Autowired
+//	private CourseJdbcRepository repository;
+
+//	@Autowired
+//	private CourseJpaRepository repository;
+	
+	@Autowired
+	private CourseSpringDataJpaRepository repository;
+	
+	@Override
+	public void run(String... args) throws Exception {
+		repository.save(new Course(1, "Learn Microservices", "60min"));
+		repository.save(new Course(2, "Learn Spring Security", "28min"));
+		repository.save(new Course(3, "Learn Python AI", "Baledung"));
+		repository.save(new Course(4, "Learn JPA !!!", "Baledung"));
+		repository.save(new Course(5, "Learn Spring Data JPA !!!", "Baledung"));
+	
+		repository.deleteById(2l);
+		System.out.println(repository.findById(1l));
+		System.out.println(repository.findById(3l));
+		
+		repository.save(new Course(1, "Learn Microservices", "qwerty"));
+		
+		System.out.println(repository.findById(1l));
+		System.out.println("----------- All Courses - ------------");
+		System.out.println(repository.findAll().toString());
+		
+		System.out.println(repository.count());
+		System.out.println("** findByAuthor() : " + repository.findByAuthor("Baledung"));
+		
+//		repository.
+//		System.out.println(repository.findById(2));   //org.springframework.dao.EmptyResultDataAccessException: 
+		           									  //Incorrect result size: expected 1, actual 0
+
+	}
+	
+}

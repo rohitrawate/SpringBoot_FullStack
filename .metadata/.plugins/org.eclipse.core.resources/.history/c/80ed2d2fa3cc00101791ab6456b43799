@@ -1,0 +1,6 @@
+create table Course(
+	id bignit not null,
+	name varcahr(255)not null,
+	author varcahr(255) not null
+	primary key (id)
+);

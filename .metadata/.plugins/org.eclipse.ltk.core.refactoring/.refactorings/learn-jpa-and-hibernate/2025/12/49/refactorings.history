@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;schema.sql&apos; to &apos;learn_JPA/src/main/resources&apos;&#x0A;- Original project: &apos;learn-jpa-and-hibernate&apos;&#x0A;- Destination element: &apos;learn_JPA/src/main/resources&apos;&#x0A;- Original element: &apos;schema.sql&apos;&#x0A;- Update references to refactored element" description="Move file" destination="=learn_JPA/src\/main\/resources=/maven.pomderived=/true=/=/optional=/true=/" element1="src/main/resources/schema.sql" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1764603842401" units="0" version="1.0"/>
+</session>

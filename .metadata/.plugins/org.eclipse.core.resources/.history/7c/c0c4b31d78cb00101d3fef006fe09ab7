@@ -1,0 +1,6 @@
+logging.level.org.springframework = trace
+
+
+currency-service.url="http://deafult1.rohit.com"
+currency-service.username="defaultusername"
+currency-service.key="defaultkey"

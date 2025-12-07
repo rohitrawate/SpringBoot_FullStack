@@ -1,0 +1,18 @@
+package com.rohit.springboot.learn_spring_boot;
+
+import java.awt.List;
+import java.util.Arrays;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class CourseController {
+
+	public List<Course> retrieveAllCourses() {
+		return Arrays.asList(
+				new Courses(1, "Learn Spring Boot", "Spring Academy"),
+				new Courses(2, "Learn AWS", "AWS Cloud"),
+				new Courses(3, "Learn DevOps", "DevOps"),
+				)
+	}
+}

@@ -1,0 +1,32 @@
+package com.rohit.learn_spring_framework;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.rohit.learn_spring_framework.game.GameRunner;
+import com.rohit.learn_spring_framework.game.GamingConsole;
+import com.rohit.learn_spring_framework.game.MarioGame;
+import com.rohit.learn_spring_framework.game.PacmanGame;
+import com.rohit.learn_spring_framework.game.SuperContraGame;
+
+
+
+public class App03GamingSpringBeans {
+
+	public static void main(String[] args) {
+		
+		
+		var context = new AnnotationConfigApplicationContext(GamingConfiguration.class);
+		
+		    context.getBean(GamingConsole.class).down();
+//		    var game = new MarioGame();     //1. Obj Creation
+//			var game = new SuperContraGame();
+//			var game = new PacmanGame();    
+//		
+//		var gameRunner = new GameRunner(game);  // Game is a dependency of the Gamerunner class
+//		//2. Obj Creation + Wiring of Dependencies
+//		gameRunner.run();
+// 
+	}
+
+}
+ 

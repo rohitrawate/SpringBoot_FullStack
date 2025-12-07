@@ -1,0 +1,18 @@
+package com.rohit.springboot.learn_jpa_and_hibernate.course;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Course {
+
+	private long id;
+	private String name;
+	private String author;
+	
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", name=" + name + ", author=" + author + "]";
+	}
+	
+	
+}

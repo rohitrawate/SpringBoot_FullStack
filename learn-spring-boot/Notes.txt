@@ -1,0 +1,14 @@
+logging.level.org.springframework= trace
+
+prod
+trace
+debug
+dev
+info
+error
+
+Run as > maven build > {Goals} clean install
+
+Building jar: 
+/Users/pradeep/Documents/workspace-spring-tools-for-eclipse-4.32.2.RELEASE/learn-spring-boot/target/
+learn-spring-boot-0.0.1-SNAPSHOT.jar
