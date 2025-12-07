@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context 
+      http://www.springframework.org/schema/context/spring-context.xsd">
+     
+    <!-- bean definitions here -->
+      <bean id="address" class="com.rohit.beans.Address">
+       <property name="houseno" value="603"></property>
+     	<property name="city" value="Mumbai"></property>
+     	<property name="pincode" value="12344"></property>
+     </bean>
+     
+     <bean id="stud" class="com.rohit.beans.Student">
+     	<property name="rollno" value="909"></property>
+     	<property name="name" value="Pradeep"></property>
+     	<property name="address" ref="address"></property>
+     </bean>  
+     
+         
+	 <!-- <bean id="address" class="com.rohit.beans.Address">
+	 <constructor-arg value="609" > </constructor-arg>
+	 <constructor-arg value="jnk" > </constructor-arg>
+	 <constructor-arg value="12345" > </constructor-arg>
+	 </bean>
+	 
+	 <bean id="stud" class="com.rohit.beans.Student">
+	 <constructor-arg type="com.rohit.beans.Address" ref="address"></constructor-arg>
+	 <constructor-arg type="int" value="999"></constructor-arg>
+	 <constructor-arg type="String" value="Pramood"></constructor-arg>
+	 
+	 </bean>  -->
+	 
+</beans>
