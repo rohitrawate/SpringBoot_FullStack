@@ -1,5 +1,0 @@
-package com.rohit.springboot.learn_spring_boot;
-
-public class CurrencyServiceConfiguration {
-
-}

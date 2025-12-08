@@ -2,10 +2,10 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-			<item value="/Users/pradeep/Documents/workspace-spring-tools-for-eclipse-4.32.2.RELEASE/learn-jpa-and-hibernate"/>
-			<item value="/Users/pradeep/Documents/workspace-spring-tools-for-eclipse-4.32.2.RELEASE/learn-spring-boot"/>
-			<item value="/Users/pradeep/Documents/workspace-spring-tools-for-eclipse-4.32.2.RELEASE/SpringLearnings_28min"/>
-			<item value="/Users/pradeep/Documents/workspace-spring-tools-for-eclipse-4.32.2.RELEASE/learn-spring-framework"/>
+			<item value="/Users/pradeep/Documents/workspace-spring-tools-for-eclipse-4.32.2.RELEASE"/>
+			<item value="/Users/pradeep/Documents/Spring_SpringBoot_"/>
+			<item value="/Users/pradeep/Documents/learn-spring-framework"/>
+			<item value="/Users/pradeep/Documents/workspace-spring-tools-for-eclipse-4.32.2.RELEASE/SpringLearnings_28min/Spring2_JavaBased"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -15,15 +15,5 @@
 			<item value="[groupId].[artifactId]-[version]"/>
 			<item value="[name]"/>
 		</list>
-	</section>
-	<section name="org.eclipse.m2e.core.pom.overview">
-	</section>
-	<section name="org.eclipse.m2e.core.pom.dependencies">
-	</section>
-	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
-		<item key="width" value="480"/>
-		<item key="height" value="494"/>
-		<item key="x" value="480"/>
-		<item key="y" value="98"/>
 	</section>
 </section>
