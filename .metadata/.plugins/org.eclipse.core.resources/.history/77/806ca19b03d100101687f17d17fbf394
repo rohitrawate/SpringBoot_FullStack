@@ -1,9 +1,0 @@
-package com.rohit.springdatajpa;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.rohit.course.Course;
-
-public interface CourseSpringDataJpaRepository extends JpaRepository<Course, Long>{
-
-}
