@@ -3,6 +3,7 @@ package com.rohitwebAppToDo.todo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,12 @@ public class TodoService {
 		Todo todo = new Todo(++todosCount, username, description, targetDate, done);
 //		 Addding to current Todos
 		todos.add(todo);
+	}
+
+	public void deleteById(int id) {
+		//todo.getId() == id
+		// todo -> todo.getId() == id
+		Predicate<? super Todo> predicate = todo -> todo.getId() == id;
+		todos.removeIf(predicate);
 	}
 }
