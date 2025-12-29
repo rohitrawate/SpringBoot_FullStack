@@ -21,7 +21,7 @@ public class SpringSecurityConfiguration {
 	public InMemoryUserDetailsManager createUserDetailsManager() {
 		
 		
-		Function<@Nullable String, @Nullable String> passwordEncoder
+		Function< String, @Nullable String> passwordEncoder
 					= input -> passwordEncoder().encode(input);
 		
 		UserDetails userDetails = User.builder()
