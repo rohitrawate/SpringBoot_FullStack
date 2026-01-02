@@ -2,12 +2,27 @@ package com.rohitwebAppToDo.todo;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
+//JPA 
 
+//@Entity( name = "Todo1")
+@Entity
 public class Todo {
 
+	public Todo() {
+		
+	}
+	
+	@Id
+	@GeneratedValue
 	private int id;
+	
+//	@Column(name = "name")
 	private String username;
 	@Size(min=10, message="Enter atleast 10 characters")
 	private String description;
