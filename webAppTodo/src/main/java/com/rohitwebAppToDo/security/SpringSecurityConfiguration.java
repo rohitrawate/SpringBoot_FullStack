@@ -2,9 +2,7 @@ package com.rohitwebAppToDo.security;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
-import java.awt.Frame;
 import java.util.function.Function;
-
 import org.jspecify.annotations.Nullable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -3,17 +3,19 @@
 		<title>Welcome Page</title>
 	</head>
 	<body>
-		<div>
-		  <center>
-			<h1>Welcome in 28 Min</h1>	
-		  <pre>
+		<%@ include file="common/header.jspf" %>
+		<%@ include file="common/navigation.jspf" %>
+		<div style="margin-left: 50px;">
+		  
+			<h3>Welcome Todo</h3>	
 			
-				<h2>Your Name:  ${name} </h2>					
+				<h4 style="margin-top: 30px;">
+					Your Name:  ${name} </h4>					
 			
 			<a href="list-todos">Manage</a> your todos
 			
-			</center>
+			
 		</div>
-		
+		<%@ include file="common/footer.jspf" %>
 	</body>
 </html>
