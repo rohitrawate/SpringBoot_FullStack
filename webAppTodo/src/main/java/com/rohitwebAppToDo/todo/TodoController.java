@@ -41,7 +41,7 @@ public class TodoController {
 	@RequestMapping(value="add-todo", method = RequestMethod.GET)
 	public String showNewTodoPage(ModelMap model) {
 		String username = getLoggedInUsername(model);
-		Todo todo = new Todo(0, username, "Default Desc", LocalDate.now().plusMonths(1), false);
+		Todo todo = new Todo(null, username, "Default Desc", LocalDate.now().plusMonths(1), false);
 		model.put("todo", todo);
 		return "todo";
 	}

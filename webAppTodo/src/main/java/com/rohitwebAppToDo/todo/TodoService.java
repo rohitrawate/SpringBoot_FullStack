@@ -17,11 +17,11 @@ public class TodoService {
 	private static int todosCount = 0;
 	
 	static {
-		todos.add(new Todo(++todosCount, "in28min", "Learn AWS", 
+		todos.add(new Todo((long) ++todosCount, "in28min", "Learn AWS", 
 					LocalDate.now().plusMonths(2), false));
-		todos.add(new Todo(++todosCount, "in28min", "Learn DevOps", 
+		todos.add(new Todo((long) ++todosCount, "in28min", "Learn DevOps", 
 					LocalDate.now().plusWeeks(3), false));
-		todos.add(new Todo(++todosCount, "in28min", "Learn Full Stack Development 1", 
+		todos.add(new Todo((long) ++todosCount, "in28min", "Learn Full Stack Development 1", 
 					LocalDate.now().plusYears(1), false));
 	}
 	
@@ -32,12 +32,13 @@ public class TodoService {
 	}
 	
 	public void addTodo(String username, String description, LocalDate targetDate, boolean done) {
-		Todo todo = new Todo(++todosCount, username, description, targetDate, done);
+//		Todo todo = new Todo(++todosCount, username, description, targetDate, done);
+		Todo todo = new Todo((long) ++todosCount, username, description, targetDate, done);
 //		 Addding to current Todos
 		todos.add(todo);
 	}
 
-	public void deleteById(int id) {
+	public void deleteById(long id) {
 		//todo.getId() == id
 		// todo -> todo.getId() == id
 		Predicate<? super Todo> predicate = todo -> todo.getId() == id;

@@ -46,11 +46,13 @@ public class TodoControllerJPA {
 	@RequestMapping(value="add-todo", method = RequestMethod.GET)
 	public String showNewTodoPage(ModelMap model) {
 		String username = getLoggedInUsername(model);
-		Todo todo = new Todo(0, username, "Default Desc", LocalDate.now().plusMonths(1), false);
+		Todo todo = new Todo(null, username, "Default Desc", LocalDate.now().plusMonths(1), false);
+		
 		model.put("todo", todo);
 		return "todo";
 	}
 
+	
 	private String getLoggedInUsername(ModelMap model) {
 		Authentication authentication = 
 				SecurityContextHolder.getContext().getAuthentication();
@@ -69,6 +71,7 @@ public class TodoControllerJPA {
 			
 			String username = getLoggedInUsername(model);
 			todo.setUsername(username);
+			System.out.println("ID before save = " + todo.getId());
 			todoRepository.save(todo);
 			
 //			todoService.addTodo(username, todo.getDescription(), 
@@ -78,7 +81,7 @@ public class TodoControllerJPA {
 		
 		//		DELETE
 		@RequestMapping("delete-todo")
-		public String deleteTodo(@RequestParam int id) {
+		public String deleteTodo(@RequestParam long id) {
 			//Delete todo
 			
 //			todoService.deleteById(id);
@@ -88,7 +91,7 @@ public class TodoControllerJPA {
 		}
 		
 		@RequestMapping(value="update-todo", method = RequestMethod.GET)
-		public String showUpdateTodoPage(@RequestParam int id, ModelMap model) {
+		public String showUpdateTodoPage(@RequestParam long id, ModelMap model) {
 //			Todo todo = todoService.findById(id);
 			Todo todo = todoRepository.findById(id).get();    // .findById() -> returns Optional ->.get()
 			model.addAttribute("todo", todo);
