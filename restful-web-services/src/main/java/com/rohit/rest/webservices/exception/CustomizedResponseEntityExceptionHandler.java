@@ -1,6 +1,8 @@
 package com.rohit.rest.webservices.exception;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.jspecify.annotations.Nullable;
 import org.springframework.http.HttpHeaders;
@@ -50,10 +52,15 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
 			ErrorDetails errorDetails = new ErrorDetails(
 						LocalDateTime.now(), 
-						ex.getMessage(), 
+						ex.getFieldError().getDefaultMessage(), 
 						request.getDescription(false));
+//			Iterating through the errors
+			 Map<String, String> errors = new HashMap<>();
+			    ex.getBindingResult().getFieldErrors().forEach(error ->
+			        errors.put(error.getField(), error.getDefaultMessage())
+			    );
 		
-			return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
 //		return handleExceptionInternal(ex, null, headers, status, request);
 	}
 	
