@@ -1,16 +1,22 @@
 package com.rohit.model;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonFilter("dynamicFilter")  // Enables runtime filtering
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
 	private int id;
     private String name;
-    private String role;
+    private String email;
     
+    public User() { }
  // Constructor
-    public User(int id, String name, String role) {
+    public User(int id, String name, String email) {
         this.id = id;
         this.name = name;
-        this.role = role;
+        this.email = email;
     }
 
     // Getters
@@ -22,8 +28,8 @@ public class User {
     	return name; 
     }
     
-    public String getRole(){
-    	return role; 
+    public String getEmail(){
+    	return email; 
     }
     
 }

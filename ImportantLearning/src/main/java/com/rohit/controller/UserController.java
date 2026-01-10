@@ -19,7 +19,7 @@ public class UserController {
 	@GetMapping("/user-details")
 	public String getUserInfo() {
 		User user = new User(101, "Rohit", "AI Engineer");
-		return "User : id- " + user.getId() + " name- "+ user.getName()  +" role- "+ user.getRole()  ;
+		return "User : id- " + user.getId() + " name- "+ user.getName()  +" role- "+ user.getEmail()  ;
 	}
 	
 	@GetMapping("/get-user")
@@ -33,7 +33,7 @@ public class UserController {
 	public String addUser( @RequestBody User user) {
 		int id = user.getId();
 		String name = user.getName();
-		String role =  user.getRole();
+		String role =  user.getEmail();
 		
 		System.out.println("User : "+ user.toString());
 		return "id: "+id+ "\nname: "+name+ "\nrole: "+role ;

@@ -2,15 +2,31 @@ package com.rohit.rest.webservices.user;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
+//@JsonPropertyOrder({ "id", "name", "birthDate" })
+@Entity(name = "user_details")
 public class User {
 	
+	@JsonProperty("id_new")
+	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Size(min=2, message = "Name should have atleast 2 characters")
+	
+	@JsonProperty("user_name")
 	private String name;
+	
 	@Past(message = "Birth Date should be in past")
+	@JsonProperty("birth_date")
 	private LocalDate birthDate;
 	
 	public User() {

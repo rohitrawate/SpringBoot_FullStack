@@ -3,6 +3,11 @@ package com.rohit.rest.webservices.user;
 import java.net.URI;
 import java.util.List;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,7 +26,8 @@ public class UserResource {
 
 	private UserDaoService service;
 	
-	private UserResource( UserDaoService service){
+//	private to public : For "Could not generate CGLIB subclass of UserResource class"
+	public UserResource( UserDaoService service){
 		System.out.println("User Resource");
 		this.service = service;
 	}
@@ -30,9 +36,13 @@ public class UserResource {
 	public List<User> retrieveAllUsers(){
 		return service.finaAll();
 	}
+	// http://localhost:8080/users
+	
+	//Entity
+	//WebMvcLinkBuilder
 	
 	@GetMapping("/users/{id}")
-	public User retrieveUser(@PathVariable Integer id){
+	public EntityModel<User> retrieveUser(@PathVariable Integer id){
 		User user = service.findOne(id);
 		
 		if(user== null) {
@@ -40,7 +50,13 @@ public class UserResource {
 //			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");   // In small cases
 		}
 		
-		return user;
+		EntityModel<User> entityModel =  EntityModel.of(user);
+		
+		WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).retrieveAllUsers());
+		
+		entityModel.add(link.withRel("all-users"));
+		
+		return entityModel;
 	}
 	
 	@DeleteMapping("/users/{id}")
