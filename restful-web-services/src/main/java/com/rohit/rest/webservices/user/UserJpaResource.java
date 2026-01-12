@@ -10,30 +10,36 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.rohit.rest.webservices.jpa.PostRepository;
 import com.rohit.rest.webservices.jpa.UserRepository;
 
 import jakarta.validation.Valid;
 
 @RestController
+@RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE )
 public class UserJpaResource {
 	
 	private UserRepository repository;
 	
+	private PostRepository postRepository;
+	
 	
 //	private to public : For "Could not generate CGLIB subclass of UserResource class"
-	public UserJpaResource(  UserRepository repository){
+	public UserJpaResource(  UserRepository repository, PostRepository postRepository){
 		System.out.println("User Resource");
 		this.repository = repository;
+		this.postRepository = postRepository;
 	}
 	
 	@GetMapping("/jpa/users")
@@ -68,6 +74,18 @@ public class UserJpaResource {
 		repository.deleteById(id);
 	}
 	
+	@GetMapping("/jpa/users/{id}/posts")
+	public List<Post> retrievePostsForUser(@PathVariable Integer id){
+		Optional<User> user = repository.findById(id);
+		
+		if(user == null) {
+			throw new UserNotFoundException("id: "+id);
+		}
+		return user.get().getPosts();
+		
+	}
+	
+	
 	@PostMapping("/jpa/users")
 	public ResponseEntity<User> createdUser( @Valid @RequestBody User user) {
 		
@@ -79,6 +97,27 @@ public class UserJpaResource {
 						.toUri();
 		
 		return ResponseEntity.created(location).build();
+	}
+	
+	@PostMapping("/jpa/users/{id}/posts")
+	public ResponseEntity<Object> createPostForUser(@PathVariable int id, @Valid @RequestBody Post post){
+		Optional<User> user = repository.findById(id);
+		
+		if(user == null) //{
+			throw new UserNotFoundException("id: "+id);
+//		}
+		post.setUser(user.get());
+		
+		Post savedPost = postRepository.save(post);
+		// Build a URI for the post saved
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(savedPost.getId())
+				.toUri();
+
+		return ResponseEntity.created(location).build();
+		//return user.get().getPosts();
+		
 	}
 	
 }

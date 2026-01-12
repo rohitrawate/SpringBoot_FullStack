@@ -8,6 +8,9 @@ insert into user_details (id, birth_date, name) values (1004, '2000-05-10', 'Pra
 
 insert into post (id, description, user_id) values ( 2001, 'I want to learn AI/ML', 1001);
 
+insert into post (id, description, user_id) values ( 2, 'I want to learn Google Cloud Fundamentales', 1001);
+
+
 insert into post (id, description, user_id) values ( 2002, 'I want to learn Technlogy', 1004);
 
 insert into post (id, description, user_id) values ( 2003, 'I want to learn AWS', 1002);
