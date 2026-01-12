@@ -22,8 +22,7 @@ public class Post {
 
 	@ManyToOne(fetch = FetchType.LAZY )  // Along post the user will be fetched 
 	@JsonIgnore      // For users to be not part of the Post bean
-//	@JoinColumn
-
+//	@JoinColumn      // Foreign Key as the primary key of the User is already defined
 	private User user;
 	
 	public Integer getId() {
