@@ -12,35 +12,42 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-//@RestController
-public class TodoResource {
+import com.rohit.rest.webservices.restful_web_services_todo.repository.TodoRepository;
+
+@RestController
+public class TodoJpaResource {
 	
 	private TodoService todoService;
+	private TodoRepository todoRepository;
 	
-	public TodoResource(TodoService todoService) {
+	public TodoJpaResource(TodoService todoService, TodoRepository todoRepository) {
 		this.todoService = todoService;
+		this.todoRepository = todoRepository;
 	}
 	
 	@GetMapping("/users/{username}/todos")
 	public List<Todo> retrieveTodos(@PathVariable String username) {
 
-		List<Todo> todosbyUsername = todoService.findByUsername(username);
+//		List<Todo> todosbyUsername = todoService.findByUsername(username);
+//		return todosbyUsername;
 		
-		return todosbyUsername;
+		return todoRepository.findByUsername(username);
 	}
 	
 	@GetMapping("/users/{username}/todos/{id}")
 	public Todo retrieveTodo(@PathVariable String username, @PathVariable int id) {
 
-		return todoService.findById(id); 
+//		return todoService.findById(id);
+		return todoRepository.findById(id).get();
 		
 	}
 	
 	@DeleteMapping("/users/{username}/todos/{id}")
 	public ResponseEntity<String> deleteTodo(@PathVariable String username, @PathVariable int id) {
-		  todoService.deleteById(id);
+//		  todoService.deleteById(id);
 		 
 //		 return ResponseEntity.noContent().build();
+		todoRepository.deleteById(id);
 		 return ResponseEntity.ok("Deleted");
 	}
 
@@ -53,7 +60,8 @@ public class TodoResource {
 //		  todo_toupdate.setTargetDate(todo.getTargetDate());
 //		  todo_toupdate.setDone(false);
 		  
-		todoService.updateTodo(todo);
+//		todoService.updateTodo(todo);
+		todoRepository.save(todo);
 //		 return ResponseEntity.noContent().build();
 		 return todo;
 	}
@@ -64,11 +72,13 @@ public class TodoResource {
 //		LocalDate targetdate = todo.getTargetDate();
 //		Boolean status = todo.isDone();
 //		Todo created_todo = todoService.addTodo(username, description, targetdate, status);
-//		
-		Todo createdTodo = todoService.addTodo(username, todo.getDescription(), 
-	              todo.getTargetDate(),todo.isDone() );
-	      
-	      return createdTodo;
+		todo.setUsername(username);
+		todo.setId(null);
+		return todoRepository.save(todo);
+//		Todo createdTodo = todoService.addTodo(username, todo.getDescription(), 
+//	              todo.getTargetDate(),todo.isDone() );
+//	      
+//	      return createdTodo;
 //		return created_todo;
 	}
 }
