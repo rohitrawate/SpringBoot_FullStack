@@ -1,5 +1,50 @@
 # React + Vite
+## Getting Started
 
+To get this project up and running on your local machine, follow these steps:
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (version 18 or higher recommended)
+- npm (comes with Node.js)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd <project-directory>
+   ```
+
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the Project
+
+To start the development server with Hot Module Replacement (HMR):
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`.
+
+### Building for Production
+
+To create an optimized production build:
+```bash
+npm run build
+```
+
+To preview the production build locally:
+```bash
+npm run preview
+```
+ 
+
+
+# React + Vite
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
